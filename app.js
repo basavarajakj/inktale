@@ -31,6 +31,12 @@ app.set('view engine', 'ejs');
 app.use(express.static(`${__dirname}/public`));
 
 
+/**
+ * parse urlencoded body
+ */
+app.use(express.urlencoded({ extended: true }))
+
+
 app.use('/register', register)
 
 

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
     <%- include('../layouts/head', { title: 'Register' }) %>
+    <script type="module" src="/js/register.js"></script>
   </head>
   <body>
     
@@ -43,9 +45,9 @@
               </div>
 
               <div class="text-field-wrapper">
-                <label for="confrim-password" class="body-large label">Confirm password</label>
+                <label for="confrim_password" class="body-large label">Confirm password</label>
 
-                <input type="password" name="confirm-password" id="confirm-password" autofocus placeholder=" " minlength="8" required class="body-large text-field">
+                <input type="password" name="confirm_password" id="confirm_password" autofocus placeholder=" " minlength="8" required class="body-large text-field">
               </div>
 
               <button type="submit" class="btn btn-fill" data-submit-btn>
