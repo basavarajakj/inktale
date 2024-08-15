@@ -39,6 +39,10 @@ app.use(express.static(`${__dirname}/public`));
 app.use(express.urlencoded({ extended: true }))
 
 
+/**
+ * Register page
+ */
+
 app.use('/register', register)
 
 

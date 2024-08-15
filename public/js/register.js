@@ -5,6 +5,11 @@
 
 'use strict';
 
+/**
+ * import modules
+ */
+import Snackbar  from "./snackbar.js";
+
 const $form = document.querySelector('[data-form]');
 const $submitBtn = document.querySelector('[data-submit-btn]');
 
@@ -25,8 +30,10 @@ $form.addEventListener('submit', async (event) => {
     
     // Enable submit button and show error message
     $submitBtn.removeAttribute('disabled');
-    //TODO: Should be a snackbar
-    console.error('Please ensure your password and confirm password fields contain same value.');
+    Snackbar({
+      type: 'error',
+      message: 'Please ensure your password and confirm password fields contain same value.',
+    });
     return;
 
   }
@@ -47,6 +54,19 @@ $form.addEventListener('submit', async (event) => {
     return window.location = response.url;
   }
 
+  // Handle case where response status is 400 (Bad request)
+  if(response.status === 400) {
+
+    // Enable submit button and show error message
+    $submitBtn.removeAttribute('disabled');
+    const { message } = await response.json();
+    Snackbar({
+      type: 'error',
+      message
+    });
+    
+
+  } 
 
 });
 
