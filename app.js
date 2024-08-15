@@ -25,6 +25,10 @@ const app = express();
  */
 app.set('view engine', 'ejs');
 
+/**
+ * setting public directory
+ */
+app.use(express.static(`${__dirname}/public`));
 
 
 app.use('/register', register)
