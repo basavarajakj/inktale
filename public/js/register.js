@@ -22,8 +22,6 @@ $form.addEventListener('submit', async (event) => {
 
   // Handling case where password and confirm password fields doesn't match.
   if (formData.get('password') !== formData.get('confirm_password')) {
-    console.log(formData.get('password'));
-    console.log(formData.get('confirm_password'));
     
     // Enable submit button and show error message
     $submitBtn.removeAttribute('disabled');
