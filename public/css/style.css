@@ -355,7 +355,7 @@ body {
   line-height: var(--lh-body-medium);
   font-weight: var(--fw-regular);
   min-height: 100vh;
-  min-height: 300dvh;
+  min-height: 100dvh;
 }
 
 input { caret-color: var(--primary); }
@@ -541,6 +541,11 @@ span.material-symbols-rounded {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.main {
+  padding-block-start: var(--top-app-bar-height);
+  min-height: calc(100vh - var(--footer-height));
 }
 
 
@@ -928,6 +933,24 @@ span.material-symbols-rounded {
 }
 
 .form-card .btn-fill { max-width: 100%; }
+
+
+
+
+
+/*-----------------------------------*\
+  #FOOTER
+\*-----------------------------------*/
+
+.footer {
+  height: var(--footer-height);
+  padding-block: var(--space-5);
+  text-align: center;
+  color: var(--on-surface-variant);
+  border-block-start: 1px solid var(--outline-variant);
+}
+
+.footer .container { opacity: 0.8; }
 
 
 

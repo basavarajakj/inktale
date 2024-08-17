@@ -36,7 +36,14 @@ $menuWrappers?.forEach(function ($menuWrapper) {
   const $menuToggler = $menuWrapper.querySelector('[data-menu-toggler');
   const $menu = $menuWrapper.querySelector('[data-menu]');
 
-  $menuToggler.addEventListener('click', () => {
+  $menuToggler.addEventListener('click', (event) => {
     $menu.classList.toggle('active');
+    event.stopPropagation();
+  });
+
+  document.addEventListener('click', (event) => {
+    if(!$menuWrapper.contains(event.target)) {
+      $menu.classList.toggle('active');
+    }
   })
 })
