@@ -21,6 +21,7 @@ const register = require('./src/routes/register_route');
 const login = require('./src/routes/login_route');
 const { connectDB, disconnectDB } = require('./src/config/mongoose_config');
 const home = require('./src/routes/home_route');
+const createBlog = require('./src/routes/create_blog_route');
 
 
 /**
@@ -86,6 +87,11 @@ app.use('/login', login)
  */
 app.use('/', home);
 
+
+/**
+ * create blog page
+ */
+app.use('/createblog', createBlog);
 
 /**
  * start server

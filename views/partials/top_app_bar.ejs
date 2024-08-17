@@ -10,6 +10,16 @@
 
 <header class="top-app-bar" data-top-app-bar>
 
+  <% if (locals.route === '/createblog') { %>
+    <button class="icon-btn filled-tonal" aria-label="Go to previous page" data-back-btn>
+      <span class="material-symbols-rounded" aria-hidden="true">
+        chevron_left
+      </span>
+
+      <div class="state-layer"></div>
+    </button>
+  <% } %>  
+
   <a href="/" class="logo">
     <img src="/images/logo-light.svg" width="98" height="24" alt="inktale" class="light">
     <img src="/images/logo-dark.svg" width="98" height="24" alt="inktale" class="dark">
@@ -18,14 +28,16 @@
   <div class="trailing-action-wrapper">
     <% if (userAuthenticated) { %>
 
-      <a href="/createblog" class="btn btn-fill">
-        <span class="material-symbols-rounded leading-icon">
-          edit
-        </span>
+      <% if (locals.route !== '/createblog')  { %>
+        <a href="/createblog" class="btn btn-fill">
+          <span class="material-symbols-rounded leading-icon">
+            edit
+          </span>
 
-        <p class="label-large">Write</p>
-        <div class="state-layer"></div>
-      </a>
+          <p class="label-large">Write</p>
+          <div class="state-layer"></div>
+        </a>
+      <% } %>
       
       <div class="menu-wrapper" data-menu-wrapper>
 
