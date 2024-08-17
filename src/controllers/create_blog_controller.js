@@ -19,6 +19,23 @@ const renderCreateBlog = (req, res) => {
   });
 };
 
+const postCreateBlog = async (req, res) => {
+ try {
+  
+  // Retrieve title and content from request body
+  const { banner, title, content } = req.body;
+
+ } catch (error) {
+
+  // Log and throw error if any
+  console.error('Error create new blog: ', error.message);
+  throw error;
+  
+ }
+  
+}
+
 module.exports = {
-  renderCreateBlog
+  renderCreateBlog,
+  postCreateBlog
 }

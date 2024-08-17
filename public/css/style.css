@@ -1024,9 +1024,9 @@ span.material-symbols-rounded {
   opacity: 0.8;
 }
 
-.create-blog-page .image-preview { aspect-ratio: 12 / 9; }
+.create-blog-page .image-preview { aspect-ratio: 21 / 9; }
 
-.create-blog-page:has( .image-preview.show) :where(.imagefield, .text, .image-field-wrapper, .btn) {
+.create-blog-page:has( .image-preview.show) :where(.image-field, .text, .image-field-wrapper .btn) {
   display: none;
 }
 

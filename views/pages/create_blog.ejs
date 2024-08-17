@@ -7,6 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 
     <script src="/js/script.js" defer></script>
+
+    <script src="/js/create_blog.js" type="module"></script>
     
   </head>
   <body>
@@ -58,7 +60,7 @@
             </div>
 
 
-            <input type="text" name="title"  placeholder="Article Title..." class="title-field headline-large">
+            <input type="text" name="title"  placeholder="Article Title..." class="title-field headline-large" required minlength="15">
 
             <textarea name="content" aria-label="Blog content" placeholder="Write your post content here..." required class="textarea body-large" data-textarea-auto-height></textarea>
 
@@ -85,6 +87,10 @@
     -->
     <%- include('../layouts/footer')  %>
 
+    <!-- 
+     - #SNACKBAR
+    -->
+    <div class="snackbar-wrapper" data-snackbar-wrapper></div>
     
   </body>
 </html>

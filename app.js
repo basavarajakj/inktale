@@ -47,6 +47,12 @@ app.use(express.urlencoded({ extended: true }));
 
 
 /**
+ * parse json
+ */
+app.use(express.json({ limit: '10mb'}));
+
+
+/**
  * instances for session storage
  */
 const store = new MongoStore({
