@@ -5,6 +5,17 @@
 
 'use strict';
 
+/**
+ * node modules
+ */
+const crypto = require('crypto');
+
+
+/**
+ * custom modules
+ */
+const uploadToCloudinary = require('../config/cloudinary_config');
+
 
 /**
  * Render the register page
@@ -24,6 +35,13 @@ const postCreateBlog = async (req, res) => {
   
   // Retrieve title and content from request body
   const { banner, title, content } = req.body;
+
+  // Upload blog banner to cloudinary
+  const public_id = crypto.randomBytes(10).toString('hex');
+  const bannerURL = await uploadToCloudinary(banner, public_id)
+  console.log(bannerURL);
+  
+;
 
  } catch (error) {
 
