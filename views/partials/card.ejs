@@ -1,0 +1,100 @@
+<% 
+
+  const {
+    _id: blogId,
+    banner: {
+      url: bannerURL
+    } = {},
+    title,
+    owner: {
+      name,
+      username
+    },
+    createdAt,
+    readingTime,
+    reaction,
+    totalBookmark
+  } = locals.blog;
+  
+ /**
+  * Compress banner using cloudinary Transformation URL API
+  * 
+  * The original URL contains 'upload/', which is replaced by 'upload/w_360, h_155, c_auto/q_auto/f_auto' .
+  * 
+  * Each parameter in new URL specifies a different transformation:
+  * *- 'w_360': Sets the width of the image to 360 pixels. 
+  * *- 'h-155': Sets the height of the image to 155 pixels. 
+  * *- 'c_auto': Automatically choose the best cropping mode to fit within the specified dimensions
+  * *- 'q_auto': Automatically adjusts the image quality to balance quality and file size.
+  * *- 'f_auto': Automatically selects the best format for the image based on the requesting browser's capabilities (e.g., Webp for browsers that support it)  
+  */
+  
+  const compressedBannerURL = bannerURL?.replace('upload/', 'upload/w_360,h_155,c_auto/q_auto/f_auto/' );
+
+%>
+
+
+<div class="card">
+
+  <% if (compressedBannerURL) {  %>
+    <figure class="card-banner image-holder">
+      <img src="<%=compressedBannerURL%>" alt="<%= title %>" width="360" height="155" class="img-cover">
+    </figure>
+  <% } %>
+
+  <div class="card-content">
+    <div class="card-meta">
+
+      <div class="avatar">
+        <p class="title-medium">
+          <%=name.at()%>
+        </p>
+      </div>
+
+      <div>
+        <p class="label-large text-on-surface">
+          <%= name %>
+        </p>
+
+        <p class="body-small text-on-surface-variant">
+          <%= new Date(createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: '2-digit' }) %>
+        </p>
+      </div>
+
+      <p class="label-small text-on-surface-variant trailing-text">
+        <%= readingTime %> min read
+      </p>
+
+    </div>
+
+    <div class="card-title title-medium text-on-surface">
+      <%= title %>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <div class="warpper">
+      <span class="icon-small material-symbols-rounded text-on-surface-variant">
+        favorite
+      </span>
+
+      <p class="body-medium text-on-surface-variant">
+        <%= reaction %> reactions
+      </p>
+    </div>
+
+    <div class="warpper">
+      <span class="icon-small material-symbols-rounded text-on-surface-variant">
+        bookmark
+      </span>
+
+      <p class="body-medium text-on-surface-variant">
+        <%= totalBookmark %> Bookmarks
+      </p>
+    </div>
+  </div>
+
+  <a href="/blogs/<%=blogId%>" title="<%=title%>" class="card-link"></a>
+  <div class="state-layer"></div>
+
+</div>

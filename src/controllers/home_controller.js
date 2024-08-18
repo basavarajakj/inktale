@@ -7,6 +7,11 @@
 
 
 /**
+ * custom modules
+ */
+const Blog = require('../models/blog_model');
+
+/**
  * Controller function to render home page with blog data.
  * 
  * @param {object} req - The HTTP request object
@@ -16,8 +21,18 @@
 const renderHome = async (req, res) => {
   try {
     
+    // Retrieve blogs form the database, selecting specified fields and populating 'owner.
+    const latestBlogs = await Blog.find()
+      .select('banner author createdAt readingTime title reaction totalBookmark')
+      .populate({
+        path: 'owner',
+        select: 'name username profilePhoto'
+      })
+      .sort({ createdAt: 'desc' });
+
     res.render('./pages/home', {
-      sessionUser:req.session.user
+      sessionUser:req.session.user,
+      latestBlogs
     });
 
   } catch (error) {
