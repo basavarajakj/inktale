@@ -497,8 +497,11 @@ button { cursor: pointer; }
 
 .text-on-surface-variant { color: var(--on-surface-variant); } 
 
+.text-on-surface { color: var(--on-surface); }
+
 .text-primary { color: var(--primary); }
 
+.icon-small { font-size: 18px; }
 
 
 
@@ -582,6 +585,18 @@ span.material-symbols-rounded {
 
 .image-field-wrapper:has( .image-preview.show) .icon-btn {
   display: grid;
+}
+
+.image-holder {
+  aspect-ratio: 21 / 9;
+  overflow: hidden;
+  background-color: var(--outline);
+}
+
+.blog-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-2);
 }
 
 
@@ -950,6 +965,54 @@ span.material-symbols-rounded {
 }
 
 
+/**
+ * Card
+ */
+
+.card {
+  background-color: var(--surface-container-highest);
+  border-radius: var(--radius-medium);
+  display: flex;
+  flex-direction: column;
+  --state-layer-bg: var(--on-surface);
+}
+
+.card-content {
+  flex-grow: 1;
+  padding: var(--space-4);
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-block-end: var(--space-3);
+}
+
+.card-meta .trailing-text { margin-inline-start: auto; }
+
+.card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border-block-start: 1px solid var(--surface-variant);
+}
+
+.card-footer .wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
 
 
 
@@ -997,7 +1060,7 @@ span.material-symbols-rounded {
 
 
 /*-----------------------------------*\
-  #COMPONENTS
+  #BLOG PAGE
 \*-----------------------------------*/
 
 .blog-write-form {
@@ -1040,6 +1103,7 @@ span.material-symbols-rounded {
   display: flex;
   justify-content: flex-end;
 }
+
 
 
 
