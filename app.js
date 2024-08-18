@@ -24,6 +24,7 @@ const home = require('./src/routes/home_route');
 const createBlog = require('./src/routes/create_blog_route');
 const logout = require('./src/routes/logout_route');
 const userAuth = require('./src/middlewares/user_auth_middleware');
+const blogDetails = require('./src/routes/blog_detail_route');
 
 
 /**
@@ -100,6 +101,12 @@ app.use('/logout', logout);
  * home page
  */
 app.use('/', home);
+
+
+/**
+ * blog details page
+ */
+app.use('/blogs', blogDetails)
 
 
 /**

@@ -5,6 +5,7 @@
 
 'use strict';
 
+
 /**
  * Middleware function to check is user is authenticated.
  * @param {object} req - The request object.

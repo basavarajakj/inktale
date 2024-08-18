@@ -1,0 +1,194 @@
+<% 
+
+  const {
+    _id: currentBlogId,
+    banner: {
+      url: bannerURL
+    } = {},
+    title,
+    content,
+    owner: {
+      name: authorName,
+      profilePhoto: {
+        url: profilePhotoURL
+      } = {},
+      username: authorUsername
+    },
+    reaction,
+    readingTime,
+    totalBookmark,
+    createdAt
+  } = locals.blog
+  
+ 
+  /**
+  * Compress banner using cloudinary Transformation URL API
+  * 
+  * The original URL contains 'upload/', which is replaced by 'upload/w_360, h_155, c_auto/q_auto/f_auto' .
+  * 
+  * Each parameter in new URL specifies a different transformation:
+  * *- 'w_960': Sets the width of the image to 960 pixels. 
+  * *- 'h-420': Sets the height of the image to 420 pixels. 
+  * *- 'c_auto': Automatically choose the best cropping mode to fit within the specified dimensions
+  * *- 'q_auto': Automatically adjusts the image quality to balance quality and file size.
+  * *- 'f_auto': Automatically selects the best format for the image based on the requesting browser's capabilities (e.g., Webp for browsers that support it)  
+  */
+  
+  const compressedBannerURL = bannerURL?.replace('upload/', 'upload/w_960,h_420,c_auto/q_auto/f_auto/' );
+
+
+%>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <%- include('../layouts/head', { title: `${title}` }) %>
+
+    <script src="/js/script.js" defer></script>
+    
+  </head>
+  <body>
+
+    <!-- 
+      - #TOP APP BAR
+    -->
+    <%- include('../partials/top_app_bar') %>
+
+    <main class="main">
+
+      <!-- 
+       - #BLOG DETAIL
+      -->
+
+      <div class="page blog-detail-page">
+        <div class="conatiner">
+
+          <article class="blog-detail">
+
+            <figure class="blog-banner image-holder">
+              <img src="<%=compressedBannerURL%>" alt="<%=title%>" class="image-cover" width="960" height="420">
+            </figure>
+              
+            <div class="blog-author">
+
+              <p class="avatar title-medium">
+                <%=authorName.at()%>
+              </p>
+
+              <div class="leading-text">
+                <a href="/profile/<%=authorUsername%>" class="title-medium text-on-surface text-link">
+                  <%=authorName%>
+                </a>
+
+                <p class="body-small text-on-surface-variant">
+                  Posted on <%=new Date(createdAt).toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric'
+                  })%>
+                </p>
+              </div>
+
+              <% if (authorUsername === locals.sessionUser?.username) { %>
+                <a href="/blogs/<%=currentBlogId%>/edit" class="btn filled-tonal">
+                  <span class="material-symbols-rounded leading-icon" aria-hidden="true">
+                    edit
+                  </span>
+
+                  <p class="label-large edit">Edit</p>
+                </a>
+              <% } %>
+
+            </div>
+
+            <div class="blog-content">
+
+              <h1 class="title headline-large text-on-surface">
+                <%=title%>
+              </h1>
+
+              <div class="content-markdown text-on-surface-varaint">
+                <%- content %>
+              </div>
+
+            </div>
+
+            <div class="blog-actions">
+
+              <div class="action-item">
+
+                <button class="icon-btn filled-tonal"data-reaction-btn>
+                  <span class="material-symbols-rounded leading-icon" aria-hidden="true">
+                    favorite
+                  </span>
+
+                  <div class="state-layer"></div>
+                </button>
+
+                <p class="label-large text-on-surface-varaint">
+                  <span data-reaction-number>
+                    <%=reaction%> Reaction
+                  </span>
+                </p>
+
+              </div>
+              
+              <div class="action-item">
+
+                <button class="icon-btn filled-tonal"data-reading-list-btn>
+                  <span class="material-symbols-rounded leading-icon" aria-hidden="true">
+                    bookmark
+                  </span>
+
+                  <div class="state-layer"></div>
+                </button>
+
+                <p class="label-large text-on-surface-varaint">
+                  <span data-reading-list-number>
+                    <%=totalBookmark%> Bookmarks
+                  </span>
+                </p>
+
+              </div>
+
+            </div>
+
+          </article>
+
+          <!-- 
+           - #MORE BLOG
+          -->
+           <% if (locals.ownerBlogs.length) { %>
+            <section class="more-blog">
+
+              <h2 class="title title-large text-on-surface"> 
+                Read next  
+              <h2>
+
+              <div class="blog-list">
+
+                <% locals.ownerBlogs.forEach(blog => { %>
+                  <%- include('../partials/card', { blog }) %>
+                <% }) %>
+
+              </div>
+
+            </section>
+           <% } %>
+
+        </div>
+      </div>
+
+      
+    </main>
+
+
+    <!-- 
+     - #FOOTER
+    -->
+    <%- include('../layouts/footer')  %>
+
+    
+  </body>
+</html>
