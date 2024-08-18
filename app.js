@@ -23,6 +23,7 @@ const { connectDB, disconnectDB } = require('./src/config/mongoose_config');
 const home = require('./src/routes/home_route');
 const createBlog = require('./src/routes/create_blog_route');
 const logout = require('./src/routes/logout_route');
+const userAuth = require('./src/middlewares/user_auth_middleware');
 
 
 /**
@@ -99,6 +100,12 @@ app.use('/logout', logout);
  * home page
  */
 app.use('/', home);
+
+
+/**
+ * user authorization
+ */
+app.use('/', userAuth);
 
 
 /**
