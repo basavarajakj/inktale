@@ -35,6 +35,10 @@
             <% } %>
           </div>
 
+          <% if(locals.pagination.next || locals.pagination.prev) { %>
+            <%- include('../partials/pagination') %>
+          <% } %>
+
         </div>
       </article>
       
