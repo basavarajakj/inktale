@@ -6,6 +6,12 @@
 'use strict';
 
 
+/**
+ * custom modules
+ */
+import dialog from './dialog.js';
+
+
 // Select the reading list button element add reading list number
 const $readingListBtn = document.querySelector('[data-reading-list-btn]');
 const $readingListNumber = document.querySelector('[data-reading-list-number]');
@@ -38,8 +44,12 @@ const addToReadingList =  async () => {
 
     // Handle case where response 401 (Unauthorized) 
     if (response.status === 401) {
-      //TODO: show dialog for login
-      console.log('Need to login');
+      const $dialog = dialog({
+        title: 'Login to continue',
+        content: `We are a community where coders connect, stay informed, and advance their careers.`
+      });
+      
+      document.body.appendChild($dialog);
     }
 
   } catch (error) {

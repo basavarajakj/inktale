@@ -5,6 +5,11 @@
 
 'use strict';
 
+/**
+ * custom modules
+ */
+import dialog from "./dialog.js";
+
 
 // select the reaction button element and reaction number
 const $reactionBtn = document.querySelector('[data-reaction-btn]');
@@ -39,8 +44,12 @@ const addReaction = async () => {
 
     // Handle case where response 401 (Unauthorized) 
     if (response.status === 401) {
-      //TODO: show dialog for login
-      console.log('Need to login');
+      const $dialog = dialog({
+        title: 'Login to continue',
+        content: `We are a community where coders connect, stay informed, and advance their careers.`
+      });
+
+      document.body.appendChild($dialog);
     }
 
   } catch (error) {
