@@ -25,6 +25,7 @@ const createBlog = require('./src/routes/create_blog_route');
 const logout = require('./src/routes/logout_route');
 const userAuth = require('./src/middlewares/user_auth_middleware');
 const blogDetails = require('./src/routes/blog_detail_route');
+const readingList = require('./src/routes/reading_list_route');
 
 
 /**
@@ -119,6 +120,12 @@ app.use('/', userAuth);
  * create blog page
  */
 app.use('/createblog', createBlog);
+
+/**
+ * reading list 
+ */
+app.use('/readinglist', readingList);
+
 
 /**
  * start server
