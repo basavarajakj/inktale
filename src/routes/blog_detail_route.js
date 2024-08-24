@@ -17,6 +17,7 @@ const router = require('express').Router();
  */
 const renderBlogDetail = require('../controllers/blog_detail_controller');
 const { updateReaction, deleteReaction} = require('../controllers/reaction_controller');
+const { addToReadingList, removeFromReadingList } = require('../controllers/readingList_controller');
 
 // GET route: Render the blog create page
 router.get('/:blogId', renderBlogDetail);
@@ -25,7 +26,13 @@ router.get('/:blogId', renderBlogDetail);
 router.put('/:blogId/reactions', updateReaction);
 
 // DELETE route: Delete blog reactions
-router.delete('/:blogId/reactions', deleteReaction)
+router.delete('/:blogId/reactions', deleteReaction);
+
+// PUT route: update readingList
+router.put('/:blogId/readingList', addToReadingList);
+
+// DELETE route: remove reading list
+router.delete('/:blogId/readingList', removeFromReadingList)
 
 
 module.exports = router;

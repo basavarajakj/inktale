@@ -5,10 +5,6 @@
 
 'use strict';
 
-/**
- * custom modules
- */
-
 
 // select the reaction button element and reaction number
 const $reactionBtn = document.querySelector('[data-reaction-btn]');

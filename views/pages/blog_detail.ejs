@@ -50,12 +50,12 @@
 
     <%- include('../layouts/head', { title: `${title}` }) %>
 
-    <script src="/js/script.js" defer></script>
-    
     <!-- 
-     - custom js link
+      - custom js link
     -->
-     <script type="module" src="/js/reaction.js"></script>
+    <script type="module" src="/js/reaction.js"></script>
+    <script type="module" src="/js/reading_list.js"></script>
+    <script src="/js/script.js" defer></script>
 
     <!-- 
      - highlight.js cdn link
@@ -155,7 +155,7 @@
               
               <div class="action-item">
 
-                <button class="icon-btn filled-tonal" data-reading-list-btn>
+                <button class="icon-btn filled-tonal <%=userReadingListedBlogs?.includes(currentBlogId) ? 'active' : ''  %>" data-reading-list-btn>
                   <span class="material-symbols-rounded icon" aria-hidden="true">
                     bookmark
                   </span>
