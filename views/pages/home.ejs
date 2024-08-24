@@ -26,13 +26,16 @@
 
           <div class="blog-list">
 
-            <% if (locals.latestBlogs.length) { %>
+            <% if (locals.latestBlogs && locals.latestBlogs.length>0) { %>
               <% locals.latestBlogs.forEach(blog => { %>
                 
                 <%- include('../partials/card', { blog }) %>
 
               <% }); %>
+            <% } else {%>
+              <p>No blogs available at this moment. Please check back later.</p>
             <% } %>
+            
           </div>
 
           <% if(locals.pagination.next || locals.pagination.prev) { %>

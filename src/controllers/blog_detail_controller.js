@@ -16,6 +16,7 @@ const mongoose = require('mongoose');
  * custom modules
  */
 const Blog = require('../models/blog_model');
+const User = require('../models/user_model');
 const markdown = require('../config/markdown_it_config');
 
 
@@ -63,10 +64,19 @@ const renderBlogDetail = async (req, res) => {
         .sort({ createdAt: 'desc' })
         .limit(3);
 
+      // Retrieve the session user's reacted blogs and reading ist to check if the session user has reacted to the blog or added tp reading list.
+      let user;
+      if (req.session.user) {
+        user = await User.findOne({ username: req.session.user.username })
+        .select('reactedBlogs readingList');
+      }
+
+
       res.render('./pages/blog_detail', {
         sessionUser: req.session.user,
         blog,
         ownerBlogs,
+        user,
         markdown
       });
 

@@ -47,7 +47,7 @@ const UserSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
-  reactedBogs: {
+  reactedBlogs: {
     type: [mongoose.SchemaType.ObjectId],
     ref: 'Blog'
   },

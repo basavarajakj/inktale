@@ -36,6 +36,11 @@
   
   const compressedBannerURL = bannerURL?.replace('upload/', 'upload/w_960,h_420,c_auto/q_auto/f_auto/' );
 
+  // Destructure logged user details
+  const {
+    readingList: userReadingListedBlogs,
+    reactedBlogs: userReactedBlogs
+  } = locals.user || {};
 
 %>
 
@@ -47,6 +52,11 @@
 
     <script src="/js/script.js" defer></script>
     
+    <!-- 
+     - custom js link
+    -->
+     <script type="module" src="/js/reaction.js"></script>
+
     <!-- 
      - highlight.js cdn link
     -->
@@ -126,7 +136,7 @@
 
               <div class="action-item">
 
-                <button class="icon-btn filled-tonal"data-reaction-btn>
+                <button class="icon-btn filled-tonal <%=userReactedBlogs?.includes(currentBlogId) ? 'active' : '' %>"  data-reaction-btn>
                   <span class="material-symbols-rounded icon" aria-hidden="true">
                     favorite
                   </span>
@@ -136,15 +146,16 @@
 
                 <p class="label-large text-on-surface-varaint">
                   <span data-reaction-number>
-                    <%=reaction%> Reaction
+                    <%=reaction%> 
                   </span>
+                  Reactions
                 </p>
 
               </div>
               
               <div class="action-item">
 
-                <button class="icon-btn filled-tonal"data-reading-list-btn>
+                <button class="icon-btn filled-tonal" data-reading-list-btn>
                   <span class="material-symbols-rounded icon" aria-hidden="true">
                     bookmark
                   </span>
@@ -154,8 +165,9 @@
 
                 <p class="label-large text-on-surface-varaint">
                   <span data-reading-list-number>
-                    <%=totalBookmark%> Bookmarks
+                    <%=totalBookmark%> 
                   </span>
+                  Bookmarks
                 </p>
 
               </div>
