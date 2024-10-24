@@ -17,8 +17,8 @@ import imageDataURL from './utils/imageAsDataUrl.js';
 
 // Selectors for image field, image-preview and clear preview button
 const $imageField = document.querySelector('[data-image-field]');
-const $imagePreview = document.querySelector('[data-image-preview]');
-const $imagePreviewClear = document.querySelector('[data-image-preview-clear]');
+export const $imagePreview = document.querySelector('[data-image-preview]');
+export const $imagePreviewClear = document.querySelector('[data-image-preview-clear]');
 
 // Event listener for image filed change to trigger image preview
 $imageField.addEventListener('change', () => {

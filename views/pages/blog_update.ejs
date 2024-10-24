@@ -1,14 +1,29 @@
+<% 
+  const {
+    banner: {
+      url: bannerURL
+    },
+    title,
+    content,
+    updatedAt
+  } = locals.currentBlog;
+
+  const compressedBannerURL = bannerURL?.replace('upload/', 'upload/w_960,h_420,c_auto/q_auto/f_auto/' );
+%>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
 
-    <%- include('../layouts/head', { title: 'New Blog' }) %>
+    <%- include('../layouts/head', { title: 'Edit blog' }) %>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 
     <script src="/js/script.js" defer></script>
 
-    <script src="/js/create_blog.js" type="module"></script>
+    <script src="/js/update_blog.js" type="module"></script>
     
   </head>
   <body>
@@ -24,7 +39,7 @@
         <div class="container">
 
           <h2 class="page-title text-on-surface headline-small">
-            Create blog
+            Edit blog
           </h2>
 
           <form class="blog-write-form" data-form>
@@ -47,7 +62,9 @@
                 Use a ratio of 21:9 for best results. <br> Only JPEG and PNG with max size 5MB.
               </p>
 
-              <div class="image-preview image-cover" data-image-preview></div>
+              <div class="image-preview image-cover show" data-image-preview>
+                <img src="<%=compressedBannerURL%>" alt="<%=title%>" class="image-cover"/>
+              </div>
 
               <button type="button" class="icon-btn filled-tonal" data-image-preview-clear>
                 <span class="material-symbols-rounded">
@@ -60,14 +77,14 @@
             </div>
 
 
-            <input type="text" name="title"  placeholder="Article Title..." class="title-field headline-large" required minlength="15">
+            <input type="text" name="title"  placeholder="Article Title..." class="title-field headline-large" required minlength="15" value="<%=title%>">
 
-            <textarea name="content" aria-label="Blog content" placeholder="Write your post content here..." required class="textarea body-large" data-textarea-auto-height></textarea>
+            <textarea name="content" aria-label="Blog content" placeholder="Write your post content here..." required class="textarea body-large" data-textarea-auto-height><%=content%></textarea>
 
             <div class="footer-actions">
 
-              <button class="btn btn-fill" data-publish-btn>
-                <p class="label-large">Publish</p>
+              <button class="btn btn-fill" data-submit-btn>
+                <p class="label-large">Update</p>
 
                 <div class="state-layer"></div>
               </button>
