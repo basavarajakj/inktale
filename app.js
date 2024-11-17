@@ -26,7 +26,8 @@ const logout = require('./src/routes/logout_route');
 const userAuth = require('./src/middlewares/user_auth_middleware');
 const blogDetails = require('./src/routes/blog_detail_route');
 const readingList = require('./src/routes/reading_list_route');
-const blogUpdate = require('./src/routes/blog-update-route')
+const blogUpdate = require('./src/routes/blog-update-route');
+const profile = require('./src/routes/profile_route');
 
 
 /**
@@ -133,6 +134,12 @@ app.use('/readinglist', readingList);
  * blog update
  */
 app.use('/blogs', blogUpdate);
+
+
+/**
+ * profile page
+ */
+app.use('/profile', profile);
 
 
 /**
