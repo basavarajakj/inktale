@@ -27,6 +27,7 @@ const userAuth = require('./src/middlewares/user_auth_middleware');
 const blogDetails = require('./src/routes/blog_detail_route');
 const readingList = require('./src/routes/reading_list_route');
 const blogUpdate = require('./src/routes/blog-update-route');
+const blogDelete = require('./src/routes/blog_delete_route');
 const profile = require('./src/routes/profile_route');
 const dashboard = require('./src/routes/dashboard_route');
 
@@ -132,9 +133,9 @@ app.use('/readinglist', readingList);
 
 
 /**
- * blog update
+ * blog update and blog delete
  */
-app.use('/blogs', blogUpdate);
+app.use('/blogs', blogUpdate, blogDelete);
 
 
 /**

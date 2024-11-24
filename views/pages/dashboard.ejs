@@ -14,6 +14,7 @@
     <%- include('../layouts/head', { title: 'Dashboard' }) %>
 
     <script src="/js/script.js" defer></script>
+    <script type="module" src="/js/delete_blog.js"></script>
     
   </head>
   <body>
@@ -140,7 +141,11 @@
      - #FOOTER
     -->
     <%- include('../layouts/footer')  %>
-
+    
+    <!-- 
+     - #SNACKBAR
+    -->
+    <div class="snackbar-wrapper" data-snackbar-wrapper></div>
     
   </body>
 </html>
