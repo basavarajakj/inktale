@@ -29,6 +29,7 @@ const deleteBlog = async (req, res) => {
     currentUser.blogPublished--;
     currentUser.totalVisits -= deletedBlog.totalVisit;
     currentUser.totalReactions -+ deleteBlog.reaction;
+    currentUser.blogs.splice(currentUser.blogs.indexOf(blogId), 1);
     await currentUser.save();
 
     await Blog.deleteOne({ _id: blogId });
