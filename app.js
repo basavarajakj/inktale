@@ -28,6 +28,7 @@ const blogDetails = require('./src/routes/blog_detail_route');
 const readingList = require('./src/routes/reading_list_route');
 const blogUpdate = require('./src/routes/blog-update-route');
 const profile = require('./src/routes/profile_route');
+const dashboard = require('./src/routes/dashboard_route');
 
 
 /**
@@ -140,6 +141,12 @@ app.use('/blogs', blogUpdate);
  * profile page
  */
 app.use('/profile', profile);
+
+
+/**
+ * dashboard
+ */
+app.use('/dashboard', dashboard);
 
 
 /**

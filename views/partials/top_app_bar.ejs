@@ -58,26 +58,27 @@
           <div class="list-item small">
             <div class="avatar">
 
-              <p class="title-medium">
-                <%=name.at()%>
-              </p>
+                <p class="title-medium">
+                  <%=name.at()%>
+                </p>
 
+              </div>
+
+              <div>
+                <p class="label-small text-primary truncate-oneline">
+                  <%=username%>
+                </p>
+                
+                <p class="body-large text-on-surface">
+                  <%=name%>
+                </p>
+              </div>
+              
+              <div class="state-layer"></div>
+              
+              <a href="/profile/<%=username%>" title="<%=name%>" class="list-item-link"> </a>
             </div>
-
-            <div>
-              <p class="label-small text-primary truncate-oneline">
-                <%=username%>
-              </p>
-
-              <p class="body-large text-on-surface">
-                <%=name%>
-              </p>
-            </div>
-
-            <div class="state-layer"></div>
-
-            <a href="/profile/<%=username%>" title="<%=name%>" class="list-item-link"></a>
-          </div>
+         
 
           <div class="divider"></div>
 

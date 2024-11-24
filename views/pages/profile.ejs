@@ -58,7 +58,7 @@
   
               <h3 class="title headline-medium text-on-surface"><%= profileName %></h3>
   
-              <p class="bio body-large text-on-surface-varaint">
+              <p class="bio body-large text-on-surface-variant">
                 <%=bio || '404 Bio not found' %>
               </p>
   
@@ -69,7 +69,7 @@
                     calendar_month
                   </span>
   
-                  <p class="body-large text-on-surface-varaint">
+                  <p class="body-large text-on-surface-variant">
                     Member since <%=new Date(createdAt).toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' })%>
                   </p>
                 </div>
@@ -79,7 +79,7 @@
                     article
                   </span>
   
-                  <p class="body-large text-on-surface-varaint">
+                  <p class="body-large text-on-surface-variant">
                     <%= blogPublished %> blogs published.
                   </p>
                 </div>
